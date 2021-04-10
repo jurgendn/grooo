@@ -29,7 +29,7 @@
 
 #### Degree Distribution
 
-<img src="Graph-Based in Spam Call Detection.assets/Degree Distribution-1618043346764.png" alt="Degree Distribution" style="zoom: 5%;" />
+<img src="Graph-Based in Spam Call Detection.assets/Degree Distribution-1618043346764.png" alt="Degree Distribution" style="zoom: 2%;" />
 
 Degree Distribution: Exponential Distribution $\Rightarrow$ `Scale-free Model`
 
@@ -39,11 +39,11 @@ Degree Distribution: Exponential Distribution $\Rightarrow$ `Scale-free Model`
 
 ##### CallRank Distribution each Type
 
-<img src="Graph-Based in Spam Call Detection.assets/CallRank Distribution-1618043938995.png" alt="CallRank Distribution" style="zoom:12%;" />
+<img src="Graph-Based in Spam Call Detection.assets/CallRank Distribution-1618043938995.png" alt="CallRank Distribution" style="zoom:6%;" />
 
 Only Spammers
 
-<img src="Graph-Based in Spam Call Detection.assets/CallRank Distribution (only Spammers).png" alt="CallRank Distribution (only Spammers)" style="zoom:12%;" />
+<img src="Graph-Based in Spam Call Detection.assets/CallRank Distribution (only Spammers).png" alt="CallRank Distribution (only Spammers)" style="zoom:6%;" />
 
 #### Confidence Interval
 
