@@ -18,7 +18,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # @app.route("/<id>")
 @app.route("/")
 def index():
-    dataset = pd.read_csv('static/files/book1_30.csv').values.tolist()
+    path = './static/files/'
+    files_list = os.listdir(path)
+    try:
+        path = path + files_list[0]
+    except:
+        return redirect("/404")
+    dataset = pd.read_csv(path).values.tolist()
     output = []
     length = []
     for data in dataset:
@@ -70,6 +76,11 @@ def get_form():
     data = pd.DataFrame([dataset, lll]).transpose()
     data.to_csv('test.csv')
     return data.to_html()
+
+
+@app.route("/404")
+def no_file():
+    return "No file given"
 
 
 app.run(debug=True)
