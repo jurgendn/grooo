@@ -15,14 +15,13 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-# @app.route("/<id>")
 @app.route("/")
 def index():
     path = './static/files/'
     files_list = os.listdir(path)
     try:
         path = path + files_list[0]
-    except:
+    except FileNotFoundError:
         return redirect("/404")
     dataset = pd.read_csv(path).values.tolist()
     output = []
@@ -53,7 +52,10 @@ def get_file():
 
 @app.route("/label-data", methods=['POST', "GET"])
 def get_form():
-    dataset = pd.read_csv('static/files/book1_30.csv').values.tolist()
+    path = './static/files/'
+    files_list = os.listdir(path)
+    path = path + files_list[0]
+    dataset = pd.read_csv(path).values.tolist()
     output = []
     length = []
     for data in dataset:
