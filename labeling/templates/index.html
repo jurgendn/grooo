@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Card Labeling</title>
+  <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/assets/css/styles.css" />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div class="container">
+        <h1>Card ID Labeling</h1>
+        <h2>File Upload</h2>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <form action="/data-upload" method="post" enctype=multipart/form-data> <label style="margin-right: 20px">
+              Label</label><input type="file" name="file" /><button class="btn btn-primary" type="submit" style="
+                    margin-left: 30px;
+                    color: var(--dark);
+                    background: rgb(198, 226, 255);
+                  " value='upload'>
+                Upload
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr style="font-size: 32px; color: var(--dark)" />
+    </div>
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <form action='/label-data' method=post>
+              <div class="table-responsive">
+
+                <table class="table">
+                  <tbody>
+                    {% for i in idx %}
+                    <tr>
+                      <td>{{dataset[i]}}</td>
+                      <td>
+                        <select name={{i}}>
+                          <option name='name' value="0">name</option>
+                          <option name='position' value="1">position</option>
+                          <option name='address' value="2">address</option>
+                          <option name='company' value="3">company</option>
+                          <option name='website' value="4">website</option>
+                          <option name='email' value="5">email</option>
+                          <option name='phone' value="6">phone</option>
+                          <option name='other' value="7">other</option>
+                        </select>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <button class="btn btn-primary" type="submit" style="background: rgb(210, 232, 255); color: var(--dark)">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr style="font-size: 32px; color: var(--dark)" />
+    </div>
+  </div>
+  <script src="/static/assets/js/jquery.min.js"></script>
+  <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
