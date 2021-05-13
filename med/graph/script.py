@@ -17,6 +17,13 @@ def nrm(s, t='NFKC'):
 
 g = load('graph.graphml')
 
+df = pd.read_excel('BN-BG-HN-VP.xlsx')
+commune = df['Xã/Phường'].values
+district = df['Quận/Huyện'].values
+province = df['Tỉnh/TP'].values
+
+
+
 def get_datetime(s):
     return datetime.strptime(s, "%d/%m/%Y")
 
