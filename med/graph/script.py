@@ -109,6 +109,30 @@ def get_loc_tuple(g):
         loc[tmp] = [comm, dist]
     return loc
 
+# def result_processing(g, result):
+#     provinces = pd.read_csv('input/maps/provinces.csv').values.tolist()
+#     provinces = list(chain.from_iterable(provinces))
+#     result_clone = deepcopy(result)
+# #     print(result_clone[:100])
+#     result_clone = list(chain.from_iterable(result_clone))
+#     result_clone = list(chain.from_iterable(result_clone))
+#     res = Counter(result_clone)
+
+#     loc_list = {}
+    
+    
+#     for k, v in res.items():
+#         province = g.vs[k]["province"]
+#         loc_list[province] = v
+
+#     for p in provinces:
+#         if p not in loc_list.keys():
+#             loc_list[p] = 0
+
+#     ddff = {}
+#     for k, v in loc_list.items():
+#         ddff[k] = v
+#     return ddff
 
 def result_processing(result):
     result_clone = deepcopy(result)
@@ -181,13 +205,13 @@ def gen_csv(results):
 
     risk = get_dataframe(final, columns)
     #     risk.to_csv("output/BacNinh_commune.csv", index=False)
-    risk.to_excel("BacNinh-HaNoi-VP_commune.xls", index=False)
+    risk.to_excel("commune.xls", index=False)
 
     #     (risk.groupby(by=["Quan/Huyen"]).sum()).to_csv("output/BacNinh_district.csv")
     (risk.groupby(by=["Quan/Huyen"]).sum()
-     ).to_excel("BacNinh-HaNoi-VP_district.xls")
+     ).to_excel("district.xls")
     (risk.groupby(
-        by=["Tinh/TP"]).sum()).to_excel("BacNinh-HaNoi-VP_province.xls")
+        by=["Tinh/TP"]).sum()).to_excel("province.xls")
     return True
 
 
