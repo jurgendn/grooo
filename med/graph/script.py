@@ -212,13 +212,13 @@ def gen_csv(results):
 
     risk = get_dataframe(final, columns)
     #     risk.to_csv("output/BacNinh_commune.csv", index=False)
-    risk.to_excel("commune.xls", index=False)
+    risk.to_excel("commune.xlsx", index=False)
 
     #     (risk.groupby(by=["Quan/Huyen"]).sum()).to_csv("output/BacNinh_district.csv")
     (risk.groupby(by=["Quan/Huyen"]).sum()
-     ).to_excel("district.xls")
+     ).to_excel("district.xlsx")
     (risk.groupby(
-        by=["Tinh/TP"]).sum()).to_excel("province.xls")
+        by=["Tinh/TP"]).sum()).to_excel("province.xlsx")
     return True
 
 
@@ -236,5 +236,5 @@ patients['Quận/Huyện'] = dist
 patients['Tỉnh/TP'] = prv
 
 
-risk_result = loop(g, patients, 10000, 20, "8/5/2021", "18/5/2021", 6)
+risk_result = loop(g, patients, 15000, 20, "8/5/2021", "18/5/2021", 6)
 gen_csv(risk_result)
