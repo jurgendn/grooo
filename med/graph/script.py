@@ -11,13 +11,16 @@ import re
 
 import unicodedata
 
+import threading
 
-def nrm(s, t='NFKC'):
+
+
+def nrm(s, t='NFC'):
     return unicodedata.normalize(t, s)
 
-g = load('graph.graphml')
+g = load('BigGraph.graphml')
 
-df = pd.read_excel('BN-BG-HN-VP.xlsx')
+df = pd.read_excel('maps.xlsx')
 commune = df['Xã/Phường'].values
 district = df['Quận/Huyện'].values
 province = df['Tỉnh/TP'].values
@@ -116,31 +119,6 @@ def get_loc_tuple(g):
         loc[tmp] = [comm, dist]
     return loc
 
-# def result_processing(g, result):
-#     provinces = pd.read_csv('input/maps/provinces.csv').values.tolist()
-#     provinces = list(chain.from_iterable(provinces))
-#     result_clone = deepcopy(result)
-# #     print(result_clone[:100])
-#     result_clone = list(chain.from_iterable(result_clone))
-#     result_clone = list(chain.from_iterable(result_clone))
-#     res = Counter(result_clone)
-
-#     loc_list = {}
-    
-    
-#     for k, v in res.items():
-#         province = g.vs[k]["province"]
-#         loc_list[province] = v
-
-#     for p in provinces:
-#         if p not in loc_list.keys():
-#             loc_list[p] = 0
-
-#     ddff = {}
-#     for k, v in loc_list.items():
-#         ddff[k] = v
-#     return ddff
-
 def result_processing(result):
     result_clone = deepcopy(result)
     try:
@@ -236,5 +214,5 @@ patients['Quận/Huyện'] = dist
 patients['Tỉnh/TP'] = prv
 
 
-risk_result = loop(g, patients, 15000, 20, "8/5/2021", "18/5/2021", 6)
+risk_result = loop(g, patients, 20000, 25, "12/5/2021", "20/5/2021", 7)
 gen_csv(risk_result)
